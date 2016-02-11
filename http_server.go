@@ -39,6 +39,7 @@ func (s *HTTPServer) ListenAndServe() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
+	fmt.Println("addr", s.Addr())
 	s.listener, err = net.Listen("tcp", s.Addr())
 	if err != nil {
 		panic(err)
@@ -50,6 +51,7 @@ func (s *HTTPServer) ListenAndServe() {
 func (s *HTTPServer) Listen() {
 	go s.ListenAndServe()
 
+	fmt.Println("Doing channel stuff")
 	isListening := make(chan bool)
 	go func() {
 		result := false

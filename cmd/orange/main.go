@@ -6,9 +6,11 @@ import (
 	"github.com/codegangsta/cli"
 
 	"github.com/noraesae/orange-cat"
+	"fmt"
 )
 
 func main() {
+	fmt.Println("Main")
 	app := cli.NewApp()
 	app.Name = "orange"
 	app.Version = orange.Version
