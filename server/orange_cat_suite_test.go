@@ -1,4 +1,4 @@
-package orange_test
+package server
 
 import (
 	"testing"

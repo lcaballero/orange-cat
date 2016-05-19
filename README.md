@@ -1,9 +1,4 @@
-# `orange-cat`
-
-[![build
-status](https://api.travis-ci.org/noraesae/orange-cat.svg)](https://travis-ci.org/noraesae/orange-cat)
-
-A Markdown previewer written in Go
+# A Markdown previewer written in Go
 
 ## Why orange-cat?
 

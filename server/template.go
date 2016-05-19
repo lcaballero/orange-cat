@@ -1,4 +1,4 @@
-package orange
+package server
 
 import (
 	"errors"
@@ -11,20 +11,22 @@ import (
 )
 
 func Template(w http.ResponseWriter, filepath string) {
-	var style string
+	var style string = `<style type="text/css">` + DefaultStyle + "</style>"
+	var customStyle string
 	if css, err := CustomCSS(); err == nil {
-		style = *css
-	} else {
-		style = "<style>" + DefaultStyle + "</style>"
+		customStyle = *css
 	}
+	fmt.Println(style)
+	fmt.Println(customStyle)
 
 	templateStr := fmt.Sprintf(`
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset='UTF-8' />
-  <title>%[1]s</title>
-  %[2]s
+  <title>%s</title>
+  %s
+  %s
 </head>
 <body>
   <div id='md' class='markdown-body'></div>
@@ -37,7 +39,7 @@ func Template(w http.ResponseWriter, filepath string) {
       };
     })();
   </script>
-</body>`, filepath, style)
+</body>`, filepath, style, customStyle)
 
 	var (
 		t   *template.Template
@@ -59,7 +61,7 @@ func CustomCSS() (*string, error) {
 		return nil, err
 	}
 
-	customCSSPath := filepath.Join(usr.HomeDir, ".orange-cat.css")
+	customCSSPath := filepath.Join(usr.HomeDir, ".orange/orange-cat.css")
 
 	stat, err := os.Stat(customCSSPath)
 	if err != nil || !stat.Mode().IsRegular() {
