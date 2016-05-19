@@ -1,8 +1,6 @@
-package orange_test
+package server
 
 import (
-	. "."
-
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

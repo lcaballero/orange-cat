@@ -1,8 +1,6 @@
-package orange_test
+package server
 
 import (
-	. "."
-
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -72,7 +70,7 @@ var _ = Describe("HTTPServer", func() {
 		})
 
 		It("should serve the template page.", func() {
-			readme := "README.md"
+			readme := "readme.md"
 
 			server := NewHTTPServer(port)
 			server.Listen()

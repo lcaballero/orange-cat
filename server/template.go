@@ -1,4 +1,4 @@
-package orange
+package server
 
 import (
 	"errors"
@@ -61,7 +61,7 @@ func CustomCSS() (*string, error) {
 		return nil, err
 	}
 
-	customCSSPath := filepath.Join(usr.HomeDir, ".orange-cat.css")
+	customCSSPath := filepath.Join(usr.HomeDir, ".orange/orange-cat.css")
 
 	stat, err := os.Stat(customCSSPath)
 	if err != nil || !stat.Mode().IsRegular() {

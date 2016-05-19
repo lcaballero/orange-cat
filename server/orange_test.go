@@ -1,8 +1,6 @@
-package orange_test
+package server
 
 import (
-	. "."
-
 	"net/http"
 	"strconv"
 	"time"
