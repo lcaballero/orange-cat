@@ -1,0 +1,23 @@
+.markdown-body p img {
+    width: 800px;
+}
+
+
+/* custom style */
+.markdown-body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+a, a:visited {
+    color: #4183c4;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.markdown-body ol, .markdown-body > ul {
+	list-style:decimal;
+}
+.markdown-body strong {
+	font-weight:bold;
+}

@@ -4,8 +4,7 @@ import (
 	"os"
 
 	"github.com/codegangsta/cli"
-
-	"github.com/noraesae/orange-cat"
+	"github.com/lcaballero/orange-cat/server"
 )
 
 func main() {
@@ -15,7 +14,7 @@ func main() {
 func pp() {
 	app := cli.NewApp()
 	app.Name = "orange"
-	app.Version = orange.Version
+	app.Version = server.Version
 	app.Usage = `orange is a Markdown previewer written in Go.
    Its main goal is to be used with any editor you love.
    For information, please visit https://github.com/noraesae/orange-cat`
@@ -33,7 +32,7 @@ func pp() {
 	app.Action = func(c *cli.Context) {
 		args := c.Args()
 
-		orange := orange.NewOrange(c.Int("port"))
+		orange := server.NewOrange(c.Int("port"))
 
 		if c.Bool("basic") {
 			orange.UseBasic()

@@ -357,20 +357,3 @@
 .markdown-body pre code:before, .markdown-body pre code:after, .markdown-body pre tt:before, .markdown-body pre tt:after {
     content: normal
 }
-
-/* custom style */
-body {
-    padding: 20px 0;
-}
-.markdown-body {
-    max-width: 800px;
-    margin: 0 auto;
-}
-a, a:visited {
-    color: #4183c4;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-
