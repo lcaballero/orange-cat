@@ -83,16 +83,28 @@ func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		NewWebsocket(path).Serve(w, r)
 	} else {
 		if strings.HasSuffix(path, ".md") || strings.HasSuffix(path, ".markdown") {
-			Template(w, path)
+			Template(w, r, path)
+		} else if strings.HasSuffix(path, ".css") {
+			s.ServeCss(w, r, path)
 		} else {
 			s.ServeStatic(w, path)
 		}
 	}
 }
 
+func (s *HTTPServer) ServeCss(w http.ResponseWriter, r *http.Request, p string) {
+	path := "/" + p
+	fmt.Println("Css Path: ", path)
+	http.ServeFile(w, r, path)
+}
+
 func (s *HTTPServer) ServeStatic(w http.ResponseWriter, path string) {
-	if stat, err := os.Stat(path); err == nil && stat.Mode().IsRegular() {
+	stat, err := os.Stat(path);
+	fmt.Println("Path: ", path)
+	if err == nil && stat.Mode().IsRegular() {
+		fmt.Println("IsRegular Path: ", path)
 		file, _ := os.Open(path)
+		defer file.Close()
 		io.Copy(w, file)
 	}
 }
